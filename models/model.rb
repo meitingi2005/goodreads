@@ -12,18 +12,22 @@ class Book
         # @user_book_description = user_book_description
         # @user_book_img = user_book_img
     end
-    def get_author
-        book_author = @client.book_by_title(@book_title).authors.author.name 
+    def get_title
+        @book_title = @client.book_by_title(@book_title).title
     end
-
+    def get_author
+        @book_author = @client.book_by_title(@book_title).authors.author.name 
+    end
+    def get_description
+        @book_description = @client.book_by_title(@book_title).description
+    end
+    # def get_image
+    #      book_image = @client.book_by_title(@book_title).
+    # end
 end
 
-catcher = Book.new("Catcher in the Rye")
-puts catcher.get_author
-#  user_book_author = client.book_by_title(user_book_title).authors.author.name 
-
-# puts client.book_by_title(user_book_title)
-
+book_title = Book.new("Catcher in the Rye")
+puts book_title.get_description
 
 
 

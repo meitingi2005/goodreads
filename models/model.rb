@@ -1,8 +1,7 @@
-# key: apl03Pv1Wh1qnhUF6iuwQ
-# secret: m7bx1HSNHdMD36wUP7jhIyucmgt1gGpAnQJGkh7erY
 require 'goodreads'
 require 'pp'
-# client = Goodreads::Client.new(api_key: "apl03Pv1Wh1qnhUF6iuwQ", api_secret: "m7bx1HSNHdMD36wUP7jhIyucmgt1gGpAnQJGkh7erY")
+
+
 class Book
     attr_reader :book_title, :book_description, :book_img, :book_author
     def initialize(book_title)
@@ -31,3 +30,4 @@ puts book_title.get_description
 
 
 
+# pp client.book_by_title("Catcher in the Rye").similar_books.book[1].authors.author.name

@@ -16,7 +16,7 @@ class Book
 
     def get_image
         @book_image = @client.book_by_title(@book_title).image_url
-
+    end
     def get_location
         @book_location_name_link = []
         @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.name
@@ -42,7 +42,7 @@ class Book
         description = @client.book_by_title(title).description
         @similar_book_description << description
     end
-
+end
     # pp @client.book_by_title("Catcher in the Rye")
     # pp @client.book_by_title("Catcher in the Rye").similar_books.book[0].description
 
@@ -50,7 +50,7 @@ class Book
     #     @book_description = @client.book_by_title(@book_title).description
     # end
 
-end
+
 
 # book_title = Book.new("Catcher in the Rye")
 # puts book_title.get_image 

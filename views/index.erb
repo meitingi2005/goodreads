@@ -14,12 +14,27 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
+    <style>
+      form {
+        text-align: center;
+      }
+      h1, h3 {
+        text-align: center;
+      }
+      /*input[type=text]{*/
+      /*}*/
+      
+      input[type=submit]:hover {
+         background: #33cccc;
+         
+      }
+    </style>
   </head>
   <body>
     
     <div class="container-fluid">
-      <h1>Bookommender</h1>
-      <h2>Enter your favorite book: </h2>
+      <h1><b>Bookommender</b></h1>
+      <h3><emEnter your favorite book: </h3>
       <form action= '/result' method= 'post'>
         <input type='text' name='book_title'>
         <input type="submit" value="Find Similar Books">

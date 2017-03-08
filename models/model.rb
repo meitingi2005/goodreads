@@ -58,4 +58,4 @@ end
 catcher = Book.new("Catcher in the Rye")
 puts catcher.get_author
 puts catcher.similar_book_title[0]
-puts catcher.similar_book_description
+puts catcher.similar_book_description 

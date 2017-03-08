@@ -37,6 +37,7 @@ class Book
         @similar_book_titles << @client.book_by_title(@book_title).similar_books.book[1].title
         @similar_book_titles << @client.book_by_title(@book_title).similar_books.book[2].title
     end
+    
     def similar_book_description
         @similar_book_description = []
         title = @client.book_by_title(@book_title).similar_books.book[0].title

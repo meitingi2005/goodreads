@@ -9,11 +9,29 @@ class Book
         # @user_book_description = user_book_description
         # @user_book_img = user_book_img
     end
-    def get_author
-        book_author = @client.book_by_title(@book_title).authors.author.name 
-        # pp @client.book_by_title("Catcher in the Rye")
-        pp @client.book_by_title("Catcher in the Rye").similar_books.book[0].description
+
+     def get_title
+        @book_title = @client.book_by_title(@book_title).title
     end
+    
+    def get_author
+        @book_author = @client.book_by_title(@book_title).authors.author.name 
+    end
+    
+    def get_description
+        @book_description = @client.book_by_title(@book_title).description
+    end
+    
+    def get_image
+         book_image = @client.book_by_title(@book_title).image_url
+    end
+    
+    def get_location
+        @book_location_name_link = []
+        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.name
+        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.link
+    end
+    
     def similar_book_author
         @similar_book_authors = []
         @similar_book_authors << @client.book_by_title(@book_title).similar_books.book[0].authors.author.name
@@ -32,11 +50,9 @@ class Book
         title = @client.book_by_title(@book_title).similar_books.book[0].title
         description = @client.book_by_title(title).description
         @similar_book_description << description
-        
     end
     
     
-  
 end
   
 catcher = Book.new("Catcher in the Rye")

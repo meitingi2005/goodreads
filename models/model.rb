@@ -17,6 +17,7 @@ class Book
     def get_image
         @book_image = @client.book_by_title(@book_title).image_url
     end
+
     def get_location
         @book_location_name_link = []
         @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.name

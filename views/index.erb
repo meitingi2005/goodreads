@@ -15,26 +15,30 @@
     <!-- custom JS -->
     <script src="js/script.js"></script>
     <style>
+      body {
+        background-image: url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
+      }
       form {
         text-align: center;
       }
       h1, h3 {
         text-align: center;
+        color: white;
       }
-      /*input[type=text]{*/
-      /*}*/
+      input[type=text]:focus{
+        color:#e65c00;
+      }
       
       input[type=submit]:hover {
-         background: #33cccc;
-         
+         background: #e65c00;
       }
     </style>
   </head>
   <body>
     
     <div class="container-fluid">
-      <h1><b>Bookommender</b></h1>
-      <h3><emEnter your favorite book: </h3>
+      <h1><b>Book-o-mmender</b></h1>
+      <h3><em>Enter your favorite book:</em></h3>
       <form action= '/result' method= 'post'>
         <input type='text' name='book_title'>
         <input type="submit" value="Find Similar Books">

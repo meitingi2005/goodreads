@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>title</title>
     <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <!-- bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- jQuery -->
@@ -14,13 +14,30 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
+    <style>
+      body {
+        background-image: url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
+      }
+      form {
+        text-align: center;
+      }
+      h1, h2 {
+        text-align: center;
+        color: white;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
   </head>
   <body>
     
     <div class="container-fluid">
-      <h1><%= @book %></h1>
-       <!--<h2><%= @book.author %></h2>-->
-      <h1>Similar Books:</h1>
+      <h1><%= @user_book.get_title %></h1>
+       <h2><%= @user_book.get_author %></h2>
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      <!--<h1>Similar Books:</h1>-->
  
     </div>
     

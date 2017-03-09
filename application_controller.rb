@@ -13,11 +13,9 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/result' do
-    # @book_title = params[:book_title]
-    # @book = Book.new(book_title)
-    # @book.get_title
-    # @book.get_author
-    # @book.get_image
+    puts params
+    book_title = params[:book_title]
+    @user_book = Book.new(book_title)
     
     erb :result
   end

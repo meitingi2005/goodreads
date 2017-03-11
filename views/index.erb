@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <title>title</title>
     <!-- bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <!-- bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css?family=Almendra+Display" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
@@ -21,20 +21,37 @@
       form {
         text-align: center;
       }
-      h1, h3 {
+      h1 {
         text-align: center;
         color: white;
+        font-family: 'Almendra Display', cursive;
+        font-size: 85px;
+        text-shadow: 2px 2px black;
+      }
+      h3 {
+        text-align: center;
+        color: white;
+        font-family: 'Almendra Display', cursive;
+        font-size: 40px;
       }
       input[type=text]:focus{
-        color:#e65c00;
+        color:#660000;
         border-color: black;
-        /*border-shadow*/
-    
       }
-      
+      input[type=text] {
+        height: 20px; 
+        width: 300px;
+        color:#660000;
+      }
+      input[type=submit] {
+         height:30px;
+         width:250px;
+         font-size:20px;
+      }
       input[type=submit]:hover {
-         background: #e65c00;
-         color:black;
+         background: #660000;
+         color:white;
+         font-size:20px;
       }
     </style>
   </head>

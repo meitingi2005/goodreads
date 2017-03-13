@@ -3,28 +3,86 @@
   <head>
     <meta charset="UTF-8">
     <title>Bookommender</title>
-    <!-- bootstrap CSS -->
+     <!--bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- bootstrap JS -->
+     <!--bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    
+    <link href="https://fonts.googleapis.com/css?family=Almendra+Display" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
+    <style>
+      body {
+        background-image: url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
+      }
+      form {
+        text-align: center;
+      }
+      h1, h2, h3 {
+        text-align: center;
+        color: white;
+        font-family: 'Almendra Display', cursive;
+        text-shadow: 2px 2px black;
+        font-size: 42px;
+      }
+      h2 {
+        font-size:30px;
+      }
+      h3 {
+        font-size:20px;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+      .similar_books {
+        float:left;
+      }
+    </style>
   </head>
   <body>
     
     <div class="container-fluid">
-            <% @user_book.similar_books.each do |book|  %>
-            <h1><%= book.other_info["title"]  %></h1>
-            <h3>by <%= book.other_info["authors"]["author"]["name"]  %></h3>
-            <% end %>
-        
-     
-    </div>
+
+      <h1><b><%= @user_book.get_title %></b></h1>
+      <h2><b><%= @user_book.get_author %></b></h2>
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      </div>
+      
+      
+        <div class="container-fluid bg-3 text-center" class="similar_books">
+            <div class="row">
+<br>
+<br
+         <h1><b>Similar Books:</b></h1>
+    
+            
+          <div class="col-sm-4">
+           <h1> <%= @user_book.similar_books[0].other_info["title"]%></h1>
+           <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
+            <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+            </div>
+            
+            <div class="col-sm-4">
+           <h1> <%= @user_book.similar_books[1].other_info["title"]%></h1>
+           <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
+            <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
+            </div>
+            
+            <div class="col-sm-4">
+           <h1> <%= @user_book.similar_books[2].other_info["title"]%></h1>
+           <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
+            <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h3><b><%= @user_book.similar_book_description[2] %></b></h3>
+            </div>
+  </div>
+ </div>           
+  
     
   </body>
 </html>

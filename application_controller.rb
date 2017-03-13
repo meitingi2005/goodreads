@@ -19,6 +19,9 @@ class ApplicationController < Sinatra::Base
     @user_book.get_similar_books
     @user_book.get_description
     puts @error_message 
+    @user_book.get_pages
+
+
     
     erb :result
   end

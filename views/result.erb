@@ -65,6 +65,8 @@
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+            <h3><b><%= @user_book.book_pages[0][:message] %></b></h3>
+            <h3><b></b></h3>
             </div>
             
             <div class="col-sm-4">
@@ -72,6 +74,7 @@
            <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
+             <h3><b><%= @user_book.book_pages[1][:message] %></b></h3>
             </div>
             
             <div class="col-sm-4">
@@ -79,6 +82,7 @@
            <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h3><b><%= @user_book.similar_book_description[2] %></b></h3>
+             <h3><b><%= @user_book.book_pages[2][:message] %></b></h3>
             </div>
   </div>
  </div>           

@@ -18,7 +18,12 @@
   <body>
     
     <div class="container-fluid">
-      <h1><%= @book_title %></h1>
+            <% @user_book.similar_books.each do |book|  %>
+            <h1><%= book.other_info["title"]  %></h1>
+            <h3>by <%= book.other_info["authors"]["author"]["name"]  %></h3>
+            <% end %>
+        
+     
     </div>
     
   </body>

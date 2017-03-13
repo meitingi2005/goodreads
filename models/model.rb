@@ -2,7 +2,9 @@ require 'goodreads'
 require 'pp'
 class Book
 
-    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description
+
+    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message
+
     
     def initialize(book_title,other_info)
         @book_title = book_title
@@ -14,8 +16,12 @@ class Book
     end
     
     def get_title
-        @book_title = @client.book_by_title(@book_title).title
-        # pp @client.book_by_title("The Grapes of Wrath")
+        begin 
+            @book_title = @client.book_by_title(@book_title).title
+        rescue
+            @error_message = "I'm Sorry. We do not know that book."
+        end
+        
     end
     
     def get_author
@@ -82,9 +88,12 @@ end
 
 # pp client.book_by_title("Catcher in the Rye").similar_books.book[1].authors.author.name
 
-  
+# catcher = Book.new("ThhDQV",{})
+# puts catcher.get_title
+
 # catcher = Book.new("The Grapes of Wrath",{})
 # puts catcher.get_pages
+
 # puts catcher.similar_book_title[0]
 # puts catcher.similar_book_description
 

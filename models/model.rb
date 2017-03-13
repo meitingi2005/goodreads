@@ -1,7 +1,7 @@
 require 'goodreads' 
 require 'pp'
 class Book
-    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description
+    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link
     def initialize(book_title)
         @book_title = book_title
         @client = Goodreads::Client.new(api_key: "apl03Pv1Wh1qnhUF6iuwQ", api_secret: "m7bx1HSNHdMD36wUP7jhIyucmgt1gGpAnQJGkh7erY")
@@ -50,12 +50,60 @@ class Book
     # def get_description
     #     @book_description = @client.book_by_title(@book_title).description
     # end
+    
+        
+    def get_pages
+        # @book_pages = []
+        # @book_pages << @client.book_by_title(@similar_book_titles).similar_books.book[0].num_pages
+        # @book_pages << @client.book_by_title(@similar_book_titles).similar_books.book[1].num_pages
+        # @book_pages << @client.book_by_title(@similar_book_titles).similar_books.book[2].num_pages
+        @book_pages = @client.book_by_title(@book_title).num_pages
+    end
+    
+    def days_to_read_book
+        if @book_pages[0] < 300
+        puts "You can read this book in about 4 days."
+        elsif @book_pages[0] > 300 && @book_pages[0] < 600
+        puts "You can read this book in about a week."
+        elsif @book_pages[0] > 600 && @book_pages[0] < 900
+        puts "You can read this book in about a two weeks."
+        else
+        puts "This may take more than two weeks to read."
+        end
+    end
 
+    def days_to_read_book
+        if @book_pages[1] < 300
+        puts "You can read this book in about 4 days."
+        elsif @book_pages[1] > 300 && @book_pages[1] < 600
+        puts "You can read this book in about a week."
+        elsif @book_pages[1] > 600 && @book_pages[1] < 900
+        puts "You can read this book in about a two weeks."
+        else
+        puts "This may take more than two weeks to read."
+        end
+    end
+    
+        def days_to_read_book
+        if @book_pages[2] < 300
+        puts "You can read this book in about 4 days."
+        elsif @book_pages[2] > 300 && @book_pages[2] < 600
+        puts "You can read this book in about a week."
+        elsif @book_pages[2] > 600 && @book_pages[2] < 900
+        puts "You can read this book in about a two weeks."
+        else
+        puts "This may take more than two weeks to read."
+        end
+    end
+    
 end
 
 # book_title = Book.new("Catcher in the Rye")
 # puts book_title.get_image 
-
+# puts book_title.get_location[0]
+# puts book_title.get_location[1]
+# puts book_title.get_pages
+# puts book_title.days_to_read_book
 
 
 # pp client.book_by_title("Catcher in the Rye").similar_books.book[1].authors.author.name

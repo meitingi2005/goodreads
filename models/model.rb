@@ -32,6 +32,8 @@ class Book
         @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.link
     end
     
+    
+    
 
     def get_similar_books
         # @similar_books = []

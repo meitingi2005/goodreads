@@ -19,13 +19,14 @@ class Book
         begin 
             @book_title = @client.book_by_title(@book_title).title
         rescue
-            @error_message = "I'm Sorry. We do not know that book."
+            flash[:error] = "Your book was not found"
+            render 'index.erb'
         end
         
     end
     
     def get_author
-        @book_author = @client.book_by_title(@book_title).authors.author.name 
+        @book_author = @client.book_by_title(@book_title).authors.author.name
     end
 
     def get_image

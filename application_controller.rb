@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
     @user_book = Book.new(book_title,{})
     @user_book.get_similar_books
     @user_book.get_description
-    puts @error_message 
+    # puts @error_message 
     @user_book.get_pages
 
 

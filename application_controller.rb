@@ -1,6 +1,7 @@
 require 'dotenv/load'
 require 'bundler'
 require 'goodreads'
+require 'googlebooks'
 
 Bundler.require
 
@@ -18,6 +19,7 @@ class ApplicationController < Sinatra::Base
     @user_book = Book.new(book_title,{})
     @user_book.get_similar_books
     @user_book.get_description
+    @user_book.get_preview
     
     erb :result
   end

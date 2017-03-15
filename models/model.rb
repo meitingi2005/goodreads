@@ -1,7 +1,9 @@
-require 'goodreads' 
+require 'goodreads'  
 require 'pp'
+require 'googlebooks'
+
 class Book
-    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_books, :other_info, :similar_book_description
+    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_books, :other_info, :similar_book_description,:link
     
     def initialize(book_title,other_info)
         @book_title = book_title
@@ -14,6 +16,15 @@ class Book
     def get_title
         @book_title = @client.book_by_title(@book_title).title
         # pp @client.book_by_title("The Grapes of Wrath")
+    end
+    
+    def get_preview
+        @link =[]
+        books = GoogleBooks.search(@book_title)
+        first_book = books.first
+        @link << first_book.preview_link
+        # @preview = first_book.preview_link #=> 'F. Scott Fitzgerald'
+
     end
     
     def get_author

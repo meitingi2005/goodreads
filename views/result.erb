@@ -56,7 +56,7 @@
         <div class="container-fluid bg-3 text-center" class="similar_books">
             <div class="row">
 <br>
-<br
+<br>
          <h1><b>Similar Books:</b></h1>
     
             
@@ -65,6 +65,7 @@
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+            <a href="<%=@user_book.link[0] %>">Click Here For Preview</a>
             </div>
             
             <div class="col-sm-4">

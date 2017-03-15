@@ -20,6 +20,7 @@ class ApplicationController < Sinatra::Base
     @user_book.get_description
     puts @error_message 
     @user_book.get_pages
+    @user_book.get_goodreads_url
 
 
     

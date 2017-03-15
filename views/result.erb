@@ -9,27 +9,39 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    
     <link href="https://fonts.googleapis.com/css?family=Almendra+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <!-- custom css -->
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
     <style>
       body {
-        background-image: url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
+        background: linear-gradient(to right, rgba(0,20,255,.15), rgba(0,0,255,.15)), url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
+        background-size:cover;
+        cursor: url('owl.png'), auto;
       }
       form {
         text-align: center;
       }
+      .description {
+        background-color: black;
+        padding:0.1px;
+      }
       h1, h2, h3 {
         text-align: center;
         color: white;
-        font-family: 'Almendra Display', cursive;
         text-shadow: 2px 2px black;
-        font-size: 42px;
+        font-size: 40px;
+        font-family: 'Lora', serif;
+      }
+      h1 {
+         font-family: 'Almendra Display', cursive;
       }
       h2 {
-        font-size:30px;
+        font-size:25px;
+        font-family: 'Almendra Display', cursive;
       }
       h3 {
         font-size:20px;
@@ -38,18 +50,19 @@
         display: block;
         margin: 0 auto;
       }
-      .similar_books {
-        float:left;
+      #book_pages {
+        color:  #660066;
       }
     </style>
   </head>
   <body>
     
     <div class="container-fluid">
-
+      <!--<h1><%=@error_message %></h1>-->
       <h1><b><%= @user_book.get_title %></b></h1>
       <h2><b><%= @user_book.get_author %></b></h2>
       <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
       </div>
       
       
@@ -61,25 +74,40 @@
     
             
           <div class="col-sm-4">
-           <h1> <%= @user_book.similar_books[0].other_info["title"]%></h1>
+           <h1><b><%= @user_book.similar_books[0].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
+             <h1><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h1>
+            <br>
+            <div class="description">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
-            <a href="<%=@user_book.link[0] %>">Click Here For Preview</a>
+          
+            <h3 id="book_pages"><b><%= @user_book.book_pages[0][:message] %></b></h3>
+            </div>
             </div>
             
             <div class="col-sm-4">
-           <h1> <%= @user_book.similar_books[1].other_info["title"]%></h1>
+           <h1><b><%= @user_book.similar_books[1].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h1><b>Rating: <%= @user_book.similar_books[1].other_info["average_rating"]%></b></h1>
+            <br>
+             <div class="description">
             <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
+             <h3 id="book_pages"><b><%= @user_book.book_pages[1][:message] %></b></h3>
+             </div>
             </div>
             
             <div class="col-sm-4">
-           <h1> <%= @user_book.similar_books[2].other_info["title"]%></h1>
+           <h1><b><%= @user_book.similar_books[2].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h1><b>Rating: <%= @user_book.similar_books[2].other_info["average_rating"]%></b></h1>
+            <br>
+            <div class="description">
             <h3><b><%= @user_book.similar_book_description[2] %></b></h3>
+             <h3 id="book_pages"><b><%= @user_book.book_pages[2][:message] %></b></h3>
+             </div>
             </div>
   </div>
  </div>           

@@ -64,6 +64,7 @@
       <h1><b><%= @user_book.get_title %></b></h1>
       <h2><b><%= @user_book.get_author %></b></h2>
       <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
       </div>
       
       
@@ -78,9 +79,11 @@
            <h1><b><%= @user_book.similar_books[0].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
+             <h1><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h1>
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+          
             <h3 id="book_pages"><b><%= @user_book.book_pages[0][:message] %></b></h3>
             </div>
             </div>
@@ -89,6 +92,7 @@
            <h1><b><%= @user_book.similar_books[1].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h1><b>Rating: <%= @user_book.similar_books[1].other_info["average_rating"]%></b></h1>
             <br>
              <div class="description">
             <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
@@ -100,6 +104,7 @@
            <h1><b><%= @user_book.similar_books[2].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <h1><b>Rating: <%= @user_book.similar_books[2].other_info["average_rating"]%></b></h1>
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[2] %></b></h3>

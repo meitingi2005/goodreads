@@ -1,11 +1,9 @@
-require 'goodreads' 
+require 'goodreads'  
 require 'pp'
+# require 'googlebooks'
+
 class Book
-
-
-    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message
-
-    
+    attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message, :book_rating
     def initialize(book_title,other_info)
         @book_title = book_title
         @books = []
@@ -16,21 +14,28 @@ class Book
     end
     
     def get_title
-        begin 
+        # begin 
             @book_title = @client.book_by_title(@book_title).title
-        rescue
-            flash[:error] = "Your book was not found"
-            render 'index.erb'
-        end
+        # rescue
+        #     flash[:error] = "Your book was not found"
+        #     render 'index.erb'
+        # end
         
     end
     
+
+    
     def get_author
+        begin
         @book_author = @client.book_by_title(@book_title).authors.author.name
+        rescue
+        @book_title = @client.book_by_title(@book_title).authors.author[0]["name"]
+    end
     end
 
     def get_image
         @book_image = @client.book_by_title(@book_title).image_url
+
     end
 
     def get_location
@@ -41,7 +46,6 @@ class Book
     
     
     
-
     def get_similar_books
         # @similar_books = []
         for i in 0..2
@@ -79,6 +83,10 @@ class Book
         "This may take more than two weeks to read."
         end
     end
+    
+    def get_rating 
+        @book_rating= @client.book_by_title(@book_title).average_rating
+    end
 
 
 end
@@ -92,8 +100,8 @@ end
 # catcher = Book.new("ThhDQV",{})
 # puts catcher.get_title
 
-# catcher = Book.new("The Grapes of Wrath",{})
-# puts catcher.get_pages
+# catcher = Book.new("Emma",{})
+# puts catcher.get_title
 
 # puts catcher.similar_book_title[0]
 # puts catcher.similar_book_description

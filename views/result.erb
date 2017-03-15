@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <style>
       body {
         background: linear-gradient(to right, rgba(0,20,255,.15), rgba(0,0,255,.15)), url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
@@ -53,6 +54,21 @@
       #book_pages {
         color:  #660066;
       }
+      a{
+         text-align: center;
+         font-size: 16px;
+         font-family: 'Raleway', sans-serif;
+         color: white;
+      }
+      
+      a:hover {
+        color: white;
+    }
+
+
+      a:active {
+        color: white;
+}
     </style>
   </head>
   <body>
@@ -63,6 +79,7 @@
       <h2><b><%= @user_book.get_author %></b></h2>
       <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
       <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
+      <center><a href="<%= @user_book.get_goodreads_url %>">Click Here For More Information On This Book</a></center>
       </div>
       
       
@@ -78,6 +95,7 @@
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
              <h1><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h1>
+             <a href="<%= @user_book.similar_books[0].other_info["link"] %>">Click Here For More Information On This Book</a>
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
@@ -91,6 +109,7 @@
            <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h1><b>Rating: <%= @user_book.similar_books[1].other_info["average_rating"]%></b></h1>
+             <a href="<%= @user_book.similar_books[1].other_info["link"] %>">Click Here For More Information On This Book</a>
             <br>
              <div class="description">
             <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
@@ -103,6 +122,7 @@
            <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
             <h1><b>Rating: <%= @user_book.similar_books[2].other_info["average_rating"]%></b></h1>
+             <a href="<%= @user_book.similar_books[2].other_info["link"] %>">Click Here For More Information On This Book</a>
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[2] %></b></h3>

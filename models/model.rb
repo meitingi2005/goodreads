@@ -4,6 +4,7 @@ require 'pp'
 
 class Book
     attr_reader :book_title, :book_description, :book_img, :book_author, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message, :book_rating, :book_url
+
     def initialize(book_title,other_info)
         @book_title = book_title
         @books = []
@@ -87,10 +88,12 @@ class Book
     def get_rating 
         @book_rating= @client.book_by_title(@book_title).average_rating
     end
+
     
     def get_goodreads_url
          @book_url= @client.book_by_title(@book_title).url
     end
+
 
 end
 

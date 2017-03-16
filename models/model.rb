@@ -14,17 +14,13 @@ class Book
     end
     
     def get_title
-        # begin 
+        begin 
             @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
             erb:result #direction is set to result.erb page
-        # rescue
-            # "Sorry, your book was not found" (these lines of commented code do not work)
-            # erb:index
-        # end
+        rescue
+            "Sorry, your book was not found" 
+        end
     end
-    
-
-    
     def get_author
         begin
         @book_author = @client.book_by_title(@book_title).authors.author.name
@@ -56,11 +52,11 @@ class Book
     
     def get_description
         @similar_book_description = []
-      for i in 0..2
-      title = @client.book_by_title(@book_title).similar_books.book[i].title
-      description = @client.book_by_title(title).description
-      @similar_book_description << description
-      end
+        for i in 0..2
+        title = @client.book_by_title(@book_title).similar_books.book[i].title
+        description = @client.book_by_title(title).description
+        @similar_book_description << description
+        end
     end
     
         
@@ -93,16 +89,4 @@ end
 
 
 
-
-
-# pp client.book_by_title("Catcher in the Rye").similar_books.book[1].authors.author.name
-
-# catcher = Book.new("ThhDQV",{})
-# puts catcher.get_title
-
-# catcher = Book.new("Emma",{})
-# puts catcher.get_title
-
-# puts catcher.similar_book_title[0]
-# puts catcher.similar_book_description
 

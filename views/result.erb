@@ -60,10 +60,9 @@
   <body>
     
     <div class="container-fluid">
-      <!--<h1><%=@error_message %></h1>-->
-      <h1><b><%= @user_book.get_title %></b></h1>
-      <h2><b><%= @user_book.get_author %></b></h2>
-      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      <h1><b><%= @user_book.get_title %></b></h1> #displays the user's input of book title 
+      <h2><b><%= @user_book.get_author %></b></h2> #displays the author of the book
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;"> #displays the image of the book
       <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
       </div>
       

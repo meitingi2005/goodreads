@@ -1,6 +1,5 @@
 require 'goodreads'  
 require 'pp'
-# require 'googlebooks'
 
 class Book 
     attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message, :book_rating
@@ -18,7 +17,7 @@ class Book
             @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
             erb:result #direction is set to result.erb page
         rescue
-            "Sorry, your book was not found" 
+            "Sorry, your book was not found"  #if user input of book_title is not found within the hash this quote is displayed 
         end
     end
     def get_author

@@ -2,7 +2,7 @@ require 'goodreads'
 require 'pp'
 # require 'googlebooks'
 
-class Book
+class Book 
     attr_reader :book_title, :book_description, :book_img, :book_author, :similar_book_titles, :similar_book_authors, :similar_book_description, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message, :book_rating
     def initialize(book_title,other_info)
         @book_title = book_title
@@ -15,12 +15,12 @@ class Book
     
     def get_title
         # begin 
-            @book_title = @client.book_by_title(@book_title).title
+            @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
+            erb:result #direction is set to result.erb page
         # rescue
-        #     flash[:error] = "Your book was not found"
-        #     render 'index.erb'
+            # "Sorry, your book was not found" (these lines of commented code do not work)
+            # erb:index
         # end
-        
     end
     
 

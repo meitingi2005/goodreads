@@ -13,12 +13,12 @@ class Book
     end
     
     def get_title
-        begin 
+        # begin 
             @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
-            erb:result #direction is set to result.erb page
-        rescue
-            "Sorry, your book was not found"  #if user input of book_title is not found within the hash this quote is displayed 
-        end
+        #     erb:result #direction is set to result.erb page
+        # rescue
+        #     "Sorry, your book was not found"  #if user input of book_title is not found within the hash this quote is displayed 
+        # end
     end
     def get_author
         begin

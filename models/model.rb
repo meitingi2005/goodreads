@@ -13,7 +13,7 @@ class Book
     end
     
     def get_title
-            @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
+        @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
     end
     def get_author
         begin
@@ -24,17 +24,8 @@ class Book
     end
 
     def get_image
-        @book_image = @client.book_by_title(@book_title).image_url
-
+        @book_image = @client.book_by_title(@book_title).image_url #finds the book_title within the goodreads hash and finds the image url to return as the variable @book_image
     end
-
-    def get_location
-        @book_location_name_link = []
-        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.name
-        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.link
-    end
-    
-    
     
     def get_similar_books
         # @similar_books = []
@@ -55,11 +46,11 @@ class Book
     
         
     def get_pages
-      for i in 0..2
-      num_page = @client.book_by_title(@book_title).similar_books.book[i].num_pages.to_i
-      @book_pages << {:pages => num_page, :message => get_message(num_page)}
-      end
-      @book_pages
+        for i in 0..2
+        num_page = @client.book_by_title(@book_title).similar_books.book[i].num_pages.to_i
+        @book_pages << {:pages => num_page, :message => get_message(num_page)}
+        end
+        @book_pages
     end
     
     def get_message(num)

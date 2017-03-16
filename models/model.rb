@@ -14,7 +14,7 @@ class Book
     end
     
     def get_title
-        begin 
+        # begin 
             @book_title = @client.book_by_title(@book_title).title
         # rescue
         #     flash[:error] = "Your book was not found"
@@ -30,7 +30,7 @@ class Book
         @book_author = @client.book_by_title(@book_title).authors.author.name
         rescue
         @book_title = @client.book_by_title(@book_title).authors.author[0]["name"]
-    end
+        end
     end
 
     def get_image

@@ -2,6 +2,7 @@ require 'goodreads'
 require 'pp'
 
 
+
 class Book
     attr_reader :book_title, :book_description, :book_img, :book_author, :book_pages, :book_location_name_link, :similar_books, :other_info, :similar_book_description, :error_message, :book_rating, :book_url
 
@@ -15,17 +16,8 @@ class Book
     end
     
     def get_title
-        # begin 
-            @book_title = @client.book_by_title(@book_title).title
-        # rescue
-        #     flash[:error] = "Your book was not found"
-        #     render 'index.erb'
-        # end
-        
+        @book_title = @client.book_by_title(@book_title).title #gets user input as book_title and finds that book_title within the Goodreads hash --> it will return the title or name of the book
     end
-    
-
-    
     def get_author
         begin
         @book_author = @client.book_by_title(@book_title).authors.author.name
@@ -35,17 +27,8 @@ class Book
     end
 
     def get_image
-        @book_image = @client.book_by_title(@book_title).image_url
-
+        @book_image = @client.book_by_title(@book_title).image_url #finds the book_title within the goodreads hash and finds the image url to return as the variable @book_image
     end
-
-    def get_location
-        @book_location_name_link = []
-        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.name
-        @book_location_name_link << @client.book_by_title(@book_title).buy_links.buy_link.first.link
-    end
-    
-    
     
     def get_similar_books
         # @similar_books = []
@@ -57,20 +40,20 @@ class Book
     
     def get_description
         @similar_book_description = []
-      for i in 0..2
-      title = @client.book_by_title(@book_title).similar_books.book[i].title
-      description = @client.book_by_title(title).description
-      @similar_book_description << description
-      end
+        for i in 0..2
+        title = @client.book_by_title(@book_title).similar_books.book[i].title
+        description = @client.book_by_title(title).description
+        @similar_book_description << description
+        end
     end
     
         
     def get_pages
-      for i in 0..2
-      num_page = @client.book_by_title(@book_title).similar_books.book[i].num_pages.to_i
-      @book_pages << {:pages => num_page, :message => get_message(num_page)}
-      end
-      @book_pages
+        for i in 0..2
+        num_page = @client.book_by_title(@book_title).similar_books.book[i].num_pages.to_i
+        @book_pages << {:pages => num_page, :message => get_message(num_page)}
+        end
+        @book_pages
     end
     
     def get_message(num)
@@ -101,6 +84,7 @@ end
 
 
 
+
 # pp client.book_by_title("Catcher in the Rye").similar_books.book[1].authors.author.name
 
 # catcher = Book.new("ThhDQV",{})
@@ -111,3 +95,4 @@ end
 
 # puts catcher.similar_book_title[0]
 # puts catcher.similar_book_description
+

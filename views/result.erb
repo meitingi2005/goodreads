@@ -88,12 +88,17 @@
   <body>
     
     <div class="container-fluid">
-      <!--<h1><%=@error_message %></h1>-->
-      <h1><b><%= @user_book.get_title %></b></h1>
-      <h2><b><%= @user_book.get_author %></b></h2>
-      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
-      <h4><b>Rating: <%= @user_book.get_rating %></b></h2>
+
+      <h1><b><%= @user_book.get_title %></b></h1>  
+      <!--#displays the user's input of book title -->
+      <h2><b><%= @user_book.get_author %></b></h2> 
+      <!--#displays the author of the book-->
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;"> 
+      <!--#displays the image of the book-->
+      <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
+      <!--displays the average rating of all of the books-->
       <center><a href="<%= @user_book.get_goodreads_url %>">Click Here For More Information On This Book</a></center>
+      <!--sends user to the book's goodreads page to provide more info on book-->
       </div>
       
       
@@ -102,19 +107,25 @@
 <br>
 <br>
          <h5><b>~ Similar Books ~</b></h5>
-    
             
           <div class="col-sm-4">
            <h1><b><%= @user_book.similar_books[0].other_info["title"]%></b></h1>
+           <!-- goes inside of "other_info" hash and grabs the value of the key which is the title of the similar books-->
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
+           <!--goes inside of "other_info" hash and grabs the value of the key which is the authors name of the similar book-->
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
+            <!--image of the similar book-->
              <h4><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h4>
+             <!--rating of the similar book-->
              <a href="<%= @user_book.similar_books[0].other_info["link"] %>">Click Here For More Information On This Book</a>
+             <!--sends user to the book's goodreads page to provide more info on book-->
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+            <!--description of the similar-->
           
             <h3 id="book_pages"><b><%= @user_book.book_pages[0][:message] %></b></h3>
+            <!--provides the estimated amount of the days the user could read the book, the ":message" key comes from the hash that is within the "@book_pages" array-->
             </div>
             </div>
             

@@ -20,7 +20,7 @@ class Book
     end
     def get_author
         begin
-        @book_author = @client.book_by_title(@book_title).authors.author.name
+        @book_author = @client.book_by_title(@book_title).authors.author.name #finds the book_title within the hash and then the authors of that book/ it takes the first author and returns their name
         rescue
         @book_title = @client.book_by_title(@book_title).authors.author[0]["name"]
         end

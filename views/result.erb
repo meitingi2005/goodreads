@@ -20,13 +20,14 @@
       body {
         background: linear-gradient(to right, rgba(0,20,255,.15), rgba(0,0,255,.15)), url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
         background-size:cover;
-        cursor: url('owl.png'), auto;
+        cursor: url("http://cur.cursors-4u.net/toons/too-4/too346.cur"), auto;
       }
       form {
         text-align: center;
       }
       .description {
-        background-color: black;
+        background-color:#4d4d4d;
+        opacity: 0.8;
         padding:0.1px;
       }
       h1, h2, h3 {
@@ -35,6 +36,7 @@
         text-shadow: 2px 2px black;
         font-size: 40px;
         font-family: 'Lora', serif;
+        opacity: 1;
       }
       h1 {
          font-family: 'Almendra Display', cursive;
@@ -46,22 +48,21 @@
       h3 {
         font-size:20px;
       }
+      #book_pages {
+        color:#ccccff;
+      }
       img {
         display: block;
         margin: 0 auto;
-      }
-      #book_pages {
-        color:  #660066;
       }
     </style>
   </head>
   <body>
     
     <div class="container-fluid">
-      <!--<h1><%=@error_message %></h1>-->
-      <h1><b><%= @user_book.get_title %></b></h1>
-      <h2><b><%= @user_book.get_author %></b></h2>
-      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;">
+      <h1><b><%= @user_book.get_title %></b></h1> #displays the user's input of book title 
+      <h2><b><%= @user_book.get_author %></b></h2> #displays the author of the book
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;"> #displays the image of the book
       <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
       </div>
       

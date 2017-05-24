@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
     <!-- custom JS -->
     <script src="js/script.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Antic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Rochester" rel="stylesheet">
     <style>
       body {
         background: linear-gradient(to right, rgba(0,20,255,.15), rgba(0,0,255,.15)), url("http://cdn.wallpapersafari.com/73/37/XREwJy.jpg");
@@ -29,12 +31,13 @@
         background-color:#4d4d4d;
         opacity: 0.8;
         padding:0.1px;
+        
       }
-      h1, h2, h3 {
+      h1, h2, h3, h4, h5 {
         text-align: center;
         color: white;
         text-shadow: 2px 2px black;
-        font-size: 40px;
+        font-size: 45px;
         font-family: 'Lora', serif;
         opacity: 1;
       }
@@ -48,6 +51,16 @@
       h3 {
         font-size:20px;
       }
+      h4 {
+         text-align: center;
+         font-size: 30px;
+         font-family: 'Antic', sans-serif;
+         color: white;
+      }
+      h5 {
+       font-family: 'Almendra Display', cursive;
+       font-size: 45px;
+      }
       #book_pages {
         color:#ccccff;
       }
@@ -55,15 +68,38 @@
         display: block;
         margin: 0 auto;
       }
+      a{
+         text-align: center;
+         font-size: 20px;
+         font-family: 'Antic', sans-serif;
+         color: white;
+      }
+      
+      a:hover {
+        color: white;
+    }
+
+      a:active {
+        color: white;
+
     </style>
   </head>
   <body>
-    
+      
+
+<!--<a href="/sessions/logout">Log Out</a>-->
     <div class="container-fluid">
-      <h1><b><%= @user_book.get_title %></b></h1> #displays the user's input of book title 
-      <h2><b><%= @user_book.get_author %></b></h2> #displays the author of the book
-      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;"> #displays the image of the book
+
+      <h1><b><%= @user_book.get_title %></b></h1>  
+      <!--#displays the user's input of book title -->
+      <h2><b><%= @user_book.get_author %></b></h2> 
+      <!--#displays the author of the book-->
+      <img src="<%= @user_book.get_image %>" style="width:150px;height:210px;"> 
+      <!--#displays the image of the book-->
       <h2><b>Rating: <%= @user_book.get_rating %></b></h2>
+      <!--displays the average rating of all of the books-->
+      <center><a href="<%= @user_book.get_goodreads_url %>">Click Here For More Information On This Book</a></center>
+      <!--sends user to the book's goodreads page to provide more info on book-->
       </div>
       
       
@@ -71,48 +107,69 @@
             <div class="row">
 <br>
 <br>
-         <h1><b>Similar Books:</b></h1>
-    
+         <h5><b>~ Similar Books ~</b></h5>
             
           <div class="col-sm-4">
            <h1><b><%= @user_book.similar_books[0].other_info["title"]%></b></h1>
+           <!-- goes inside of "other_info" hash and grabs the value of the key which is the title of the similar books-->
            <h2><b><%= @user_book.similar_books[0].other_info["authors"]["author"]["name"] %></b></h2>
+           <!--goes inside of "other_info" hash and grabs the value of the key which is the authors name of the similar book-->
             <img src="<%= @user_book.similar_books[0].other_info["image_url"] %>" style="width:150px;height:210px;">
-             <h1><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h1>
+            <!--image of the similar book-->
+             <h4><b>Rating: <%= @user_book.similar_books[0].other_info["average_rating"]%></b></h4>
+             <!--rating of the similar book-->
+             <a href="<%= @user_book.similar_books[0].other_info["link"] %>">Click Here For More Information On This Book</a>
+             <!--sends user to the book's goodreads page to provide more info on book-->
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[0] %></b></h3>
+            <!--description of the similar-->
           
             <h3 id="book_pages"><b><%= @user_book.book_pages[0][:message] %></b></h3>
+            <!--provides the estimated amount of the days the user could read the book, the ":message" key comes from the hash that is within the "@book_pages" array-->
             </div>
+             <form action="/wishlist" method="post">
+                <input type="hidden" name="book_title" value="<%=@user_book.similar_books[0].other_info["title"]%> %>">
+                <input type="submit" value="Add to Wishlist">
+            </form>
             </div>
             
             <div class="col-sm-4">
            <h1><b><%= @user_book.similar_books[1].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[1].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[1].other_info["image_url"] %>" style="width:150px;height:210px;">
-            <h1><b>Rating: <%= @user_book.similar_books[1].other_info["average_rating"]%></b></h1>
+            <h4><b>Rating: <%= @user_book.similar_books[1].other_info["average_rating"]%></b></h4>
+             <a href="<%= @user_book.similar_books[1].other_info["link"] %>">Click Here For More Information On This Book</a>
             <br>
              <div class="description">
             <h3><b><%= @user_book.similar_book_description[1] %></b></h3>
              <h3 id="book_pages"><b><%= @user_book.book_pages[1][:message] %></b></h3>
              </div>
+              <form action="/wishlist" method="post">
+                <input type="hidden" name="book_title" value="<%=@user_book.similar_books[1].other_info["title"]%> %>">
+                <input type="submit" value="Add to Wishlist">
+            </form>
             </div>
             
             <div class="col-sm-4">
            <h1><b><%= @user_book.similar_books[2].other_info["title"]%></b></h1>
            <h2><b><%= @user_book.similar_books[2].other_info["authors"]["author"]["name"] %></b></h2>
             <img src="<%= @user_book.similar_books[2].other_info["image_url"] %>" style="width:150px;height:210px;">
-            <h1><b>Rating: <%= @user_book.similar_books[2].other_info["average_rating"]%></b></h1>
+            <h4><b>Rating: <%= @user_book.similar_books[2].other_info["average_rating"]%></b></h4>
+             <a href="<%= @user_book.similar_books[2].other_info["link"] %>">Click Here For More Information On This Book</a>
             <br>
             <div class="description">
             <h3><b><%= @user_book.similar_book_description[2] %></b></h3>
              <h3 id="book_pages"><b><%= @user_book.book_pages[2][:message] %></b></h3>
              </div>
+            <form action="/wishlist" method="post">
+                <input type="hidden" name="book_title" value="<%=@user_book.similar_books[2].other_info["title"] %>">
+                <input type="submit" value="Add to Wishlist">
+            </form>
             </div>
   </div>
  </div>           
-  
+   
     
   </body>
 </html>
